@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 PLAYER_ONE = 'X'
 PLAYER_TWO = 'O'
@@ -5,7 +6,7 @@ PLAYER_TWO = 'O'
 def initialize_board
   @count = 9
   @player = PLAYER_ONE
-  @board = Array.new(3){ Array.new(3, " ") }
+  @board = Array.new(3) { Array.new(3, ' ') }
 end
 
 def get_inputs
@@ -16,7 +17,7 @@ def get_inputs
     print "#{@player}, please enter the column: \n"
     input_column = gets
 
-    if(!valid = valid_move?(input_row.to_i, input_column.to_i))
+    unless (valid = valid_move?(input_row.to_i, input_column.to_i))
       puts "That one is taken \'#{@player}', try again: "
     end
   end while(!valid)
@@ -28,7 +29,7 @@ def valid_move?(input_row, input_column)
 end
 
 def update_board(inputs)
-  @board[inputs[0]-1][inputs[1]-1] = @player
+  @board[inputs[0] - 1][inputs[1] - 1] = @player
 end
 
 def play
@@ -38,11 +39,11 @@ def play
 end
 
 def switch_player
-  if(@player == PLAYER_ONE)
-    @player = PLAYER_TWO
-  else
-    @player = PLAYER_ONE
-  end
+  @player = if @player == PLAYER_ONE
+              PLAYER_TWO
+            else
+              PLAYER_ONE
+            end
 end
 
 def game_over?
@@ -51,18 +52,18 @@ def game_over?
 end
 
 def print_board
-  puts "--+---+---"
+  puts '--+---+---'
   @board.each do |row|
-    puts row.join(" | ")
-    puts "--+---+---"
+    puts row.join(' | ')
+    puts '--+---+---'
   end
 end
-
 
 initialize_board
 print_board
 begin
-  break if !play
+  break unless play
+
   switch_player
 end while !game_over?
-puts "GAME OVER" if(game_over?)
+puts 'GAME OVER' if game_over?

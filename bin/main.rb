@@ -1,6 +1,6 @@
-require_relative "../lib/board"
-require_relative "../lib/handlers"
-require_relative "../lib/player"
+require_relative '../lib/board'
+require_relative '../lib/handlers'
+require_relative '../lib/player'
 
 class Game
   attr_reader :board, :current_player, :other_player, :players, :winner, :draw

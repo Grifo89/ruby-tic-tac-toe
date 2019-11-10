@@ -4,7 +4,7 @@ PLAYER_ONE = 'X'
 PLAYER_TWO = 'O'
 
 def initialize_board
-  @count = 9
+  @count = 5
   @player = PLAYER_ONE
   @board = Array.new(3) { Array.new(3, ' ') }
 end
@@ -66,4 +66,4 @@ begin
 
   switch_player
 end while !game_over?
-puts 'GAME OVER' if game_over?
+puts 'The game keeps going until someone wins or there\'s a draw' if game_over?

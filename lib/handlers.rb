@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require_relative 'board'
 
 class Handlers
   attr_reader :moves
   def initialize(board = Board.new)
-    @moves = [[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[3,6,9],[1,5,9],[3,5,7]]
+    @moves = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]]
     @board = board
     @position
   end
@@ -24,6 +26,7 @@ class Handlers
   def game_over?(player)
     return :winner if winner?(player)
     return :draw if draw?
+
     false
   end
 end

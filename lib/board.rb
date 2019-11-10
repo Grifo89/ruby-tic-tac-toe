@@ -1,16 +1,18 @@
+# frozen_string_literal: true
+
 class Board
   attr_reader :board, :cell
 
-  def initialize()
+  def initialize
     @board = default_grid
     @cell = []
   end
 
   def print_board
-    puts "--+---+---"
+    puts '--+---+---'
     @board.each do |row|
-      puts row.join(" | ")
-      puts "--+---+---"
+      puts row.join(' | ')
+      puts '--+---+---'
     end
   end
 
@@ -32,10 +34,10 @@ class Board
   private
 
   def default_grid
-    return [[1,2,3], [4,5,6], [7,8,9]]
+    [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
   end
 
   def cell_empty
-    @board[@cell[0]][@cell[1]] == "X" || @board[@cell[0]][@cell[1]] == "O" ? false : true
+    @board[@cell[0]][@cell[1]] == 'X' || @board[@cell[0]][@cell[1]] == 'O' ? false : true
   end
 end

@@ -13,7 +13,7 @@ class Game
 
   def play
     puts "The sorting hat has talked, the first person to start is: #{current_player.name} with '#{current_player.symbol}' \n\n"
-    begin
+    loop  do
       @board.print_board
       print "#{current_player.name}, please enter a position: \n"
       position = gets.to_i
@@ -21,8 +21,10 @@ class Game
         puts "That cell is not available or the caracter is not allowed, please choose another one \n"
         position = gets.to_i
       end
+      break if @handlers.game_over?(current_player) == :winner || @handlers.game_over?(current_player) == :draw
       switch_player!
-    end while(@handlers.game_over?(current_player) == :winner || @handlers.game_over?(current_player) == :draw ? false : true)
+    end
+    @board.print_board
     puts game_over_message
   end
 

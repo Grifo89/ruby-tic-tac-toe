@@ -5,7 +5,7 @@ require_relative '../lib/handlers'
 require_relative '../lib/player'
 
 RSpec.describe Handlers do
-  let(:player) {Player.new('X', 'Christian')}
+  let(:player) { Player.new('X', 'Christian') }
 
   describe '#game_over?' do
     it 'Returns :winner if the first row is filled with the same symbol' do

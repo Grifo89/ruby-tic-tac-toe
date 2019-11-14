@@ -6,7 +6,7 @@ PLAYER_TWO = 'O'
 def initialize_board
   @count = 5
   @player = PLAYER_ONE
-  @board = Array.new(3) { Array.new(3, ' ') }
+  @board = Array.new(3) { Array.new(3, " ") }
 end
 
 def get_inputs
@@ -18,15 +18,19 @@ def get_inputs
     input_column = gets
 
     unless (valid = valid_move?(input_row.to_i, input_column.to_i))
-      puts "That one is taken \'#{@player}', try again: "
+      puts "That one is taken \'#{@player}', or wrong input try again: "
     end
   end while(!valid)
   [input_row.to_i, input_column.to_i]
 end
 
 def valid_move?(input_row, input_column)
-  @board[input_row. -1][input_column. -1].strip.empty?
+  (1..3).include?(input_row) && (1..3).include?(input_column)
+  if (1..3).include?(input_row) && (1..3).include?(input_column)
+     @board[input_row.-1][input_column.-1].strip.empty?
+  end
 end
+
 
 def update_board(inputs)
   @board[inputs[0] - 1][inputs[1] - 1] = @player
@@ -63,7 +67,6 @@ initialize_board
 print_board
 begin
   break unless play
-
   switch_player
 end while !game_over?
 puts 'The game keeps going until someone wins or there\'s a draw' if game_over?

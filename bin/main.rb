@@ -18,14 +18,17 @@ def get_inputs
     input_column = gets
 
     unless (valid = valid_move?(input_row.to_i, input_column.to_i))
-      puts "That one is taken \'#{@player}', try again: "
+      puts "That one is taken \'#{@player}' or wrong input, try again: "
     end
   end while(!valid)
   [input_row.to_i, input_column.to_i]
 end
 
 def valid_move?(input_row, input_column)
-  @board[input_row. -1][input_column. -1].strip.empty?
+  (1..3).include?(input_row) && (1..3).include?(input_column)
+  if (1..3).include?(input_row) && (1..3).include?(input_column)
+     @board[input_row.-1][input_column.-1].strip.empty?
+  end
 end
 
 def update_board(inputs)
